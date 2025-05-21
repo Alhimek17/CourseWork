@@ -1,0 +1,60 @@
+﻿﻿@using ServiceStationContracts.ViewModels
+
+@{
+    ViewData["Title"] = "ListCarsToPdf";
+}
+<div class="text-center">
+    <h2> Отчет по машинам за период </h2>
+</div>
+
+<div class="text-center">
+    <form method="post">
+        <div class="row py-4">
+            <div class="col-6">
+                <label for="dateFrom">Начало периода</label>
+                <input type="datetime-local" placeholder="Выберите дату начала периода" id="dateFrom" name="dateFrom" class="form-control" />
+            </div>
+            <div class="col-6">
+                <label for="dateTo">Окончание периода</label>
+                <input type="datetime-local" placeholder="Выберите дату окончания периода" id="dateTo" name="dateTo" class="form-control" />
+            </div>
+        </div>
+        <div>
+            <label>Введите почту</label>
+            <input type="email" placeholder="Введите вашу почту" name="executorEmail" class="form-control w-50 mx-auto" />
+        </div>
+        <div class="pt-3">
+            <div class="col-8"></div>
+            <div class ="mx-auto col-4"><input type="submit" value="Отправить на почту" class="btn btn-secondary" /></div>
+        </div>
+        <div class="pt-3" id="report">
+        </div>
+    </form>
+    <div>
+        <div class="col-8"></div>
+        <div class="col-4 mx-auto"><button type="button" id="view" class="btn btn-secondary">Показать</button></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function table() {
+            var dateFrom = $('#dateFrom').val();
+            var dateTo = $('#dateTo').val();
+            if (dateFrom && dateTo) {
+                $.ajax({
+                    method: "GET",
+                    url: "/Home/GetCarsReport",
+                    data: { dateFrom: dateFrom, dateTo: dateTo },
+                    success: function (result) {
+                        if (result != null) {
+                            $('#report').html(result);
+                        }
+                    }
+                });
+            };
+        }
+        table();
+        $('#view').on('click', (e) => table());
+    </script>
+}

@@ -1,0 +1,89 @@
+﻿@using ServiceStationContracts.ViewModels
+
+@model List<CarViewModel>
+@{
+    ViewData["Title"] = "UpdateDefect";
+}
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center w-75">
+        <div class="card-body ">
+            <div class="form-group">
+                <label>Неисправности: </label>
+                <select id="defect" name="defect" class="form-control" asp-items="@(new SelectList(@ViewBag.Defects, "Id", "DefectType", "DefectPrice"))"></select>
+            </div>
+            <div class="form-group">
+                <label>Тип неисравности</label>
+                <input type="text" id="defectType" placeholder="Введите тип неисправности" name="defectType" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Цена починки</label>
+                <input type="number" min="100" id="defectPrice" placeholder="Введите цену" name="defectPrice" class="form-control" />
+            </div>
+            <h5>Уже привязанные машины</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Номер машины</th>
+                        <th scope="col">Марка машины</th>
+                    </tr>
+                </thead>
+                <tbody id="table-elements">
+                    @* полученные машины *@
+                </tbody>
+            </table>
+            <h5>Изменить машины</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Номер машины</th>
+                        <th scope="col">Марка машины</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var car in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="car[]" value="@car.Id" id="@car.Id">
+                                </div>
+                            </td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => car.CarNumber)</td>
+                            <td class="align-middle">@Html.DisplayFor(modelItem => car.CarBrand)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br>
+            <div>
+                <input type="submit" value="Сохранить" class="btn btn-secondary text-center" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    <script>
+        function check() {
+            var defect = $('#defect').val();
+            if (defect) {
+                $.ajax({
+                    method: "GET",
+                    url: "/Home/GetDefect",
+                    data: { defectId: defect },
+                    success: function (result) {
+                        $('#defectType').val(result.item1.defectType);
+                        $('#defectPrice').val(result.item1.defectPrice);
+                        $('#table-elements').html(result.item2);
+                    }
+                });
+            };
+        }
+        check();
+        $('#defect').on('change', function () {
+            check();
+        });
+    </script>
+}

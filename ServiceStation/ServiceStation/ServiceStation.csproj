@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.18">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="NLog" Version="5.3.1" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.3.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStationBusinessLogic\ServiceStationBusinessLogic.csproj" />
+    <ProjectReference Include="..\ServiceStationContracts\ServiceStationContracts.csproj" />
+    <ProjectReference Include="..\ServiceStationDatabaseImplement\ServiceStationDatabaseImplement.csproj" />
+    <ProjectReference Include="..\ServiceStationDataModels\ServiceStationDataModels.csproj" />
+  </ItemGroup>
+
+</Project>

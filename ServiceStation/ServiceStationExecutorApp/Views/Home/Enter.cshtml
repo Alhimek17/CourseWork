@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=597860
+*@
+@{
+    ViewData["Title"] = "Enter";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Вход в приложение</h2>
+</div>
+<form method="post" class="w-75 mx-auto">
+    <div class="row my-4">
+        <div class="col-4">Номер телефона:</div>
+        <div class="col-8"><input type="text" class="form-control w-75" name="executorNumber" /></div>
+    </div>
+    <div class="row my-4">
+        <div class="col-4">Пароль:</div>
+        <div class="col-8"><input type="password" class="form-control w-75" name="password" /></div>
+    </div>
+    <div class="row my-4">
+        <div class="col-5"></div>
+        <div class="col-4"><input type="submit" value="Вход" class="btn btn-secondary w-100" /></div>
+        <div class="col-3"></div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "UpdateWorkStatus";
+}
+
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center w-25">
+        <div class="card-body">
+            <div class="form-group">
+                <label> Работа: </label>
+                <select id="work" name="work" class="form-control" asp-items="@(new SelectList(@ViewBag.Works, "Id", "WorkName", "WorkPrice"))"></select>
+            </div>
+            <br>
+            <div class="text-center pb-3">
+                <input name="status" type="submit" value="Отдать на выполнение" class="btn btn-outline-dark text-center w-100" />
+            </div>
+            <div class="text-center pb-3">
+                <input name="status" type="submit" value="Готова" class="btn btn-outline-dark text-center w-100" />
+            </div>
+        </div>
+    </div>
+</form>

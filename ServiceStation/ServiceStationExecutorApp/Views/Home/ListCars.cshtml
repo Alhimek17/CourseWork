@@ -1,0 +1,48 @@
+﻿﻿@using ServiceStationContracts.ViewModels
+
+@model List<CarViewModel>
+@{
+    ViewData["Title"] = "ListCars";
+}
+
+<section>
+    <h2>Список машин:</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr style="height: 31px">
+                <th>
+                    Номер
+                </th>
+                <th>
+                    Номер машины
+                </th>
+                <th>
+                    Марка машины
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CarBrand)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row justify-content-md-center">
+        <a asp-controller="Home" asp-action="CreateCar" class="btn btn-secondary text-center col-3">Добавить</a>
+        &nbsp;
+        <a asp-controller="Home" asp-action="UpdateCar" class="btn btn-secondary text-center col-3">Изменить</a>
+        &nbsp;
+        <a asp-controller="Home" asp-action="DeleteCar" class="btn btn-secondary text-center col-3">Удалить</a>
+    </div>
+</section>

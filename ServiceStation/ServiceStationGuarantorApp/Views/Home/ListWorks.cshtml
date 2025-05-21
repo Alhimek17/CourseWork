@@ -1,0 +1,64 @@
+﻿﻿@using ServiceStationContracts.ViewModels
+
+@model List<WorkViewModel>
+@{
+	ViewData["Title"] = "ListWorks";
+}
+
+<section>
+    <h2>Список работ:</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr style="height: 31px">
+                <th>
+                    Номер
+                </th>
+                <th>
+                    Название работы
+                </th>
+                <th>
+                    Статус работы
+                </th>
+                <th>
+                    Стоимость работы
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkPrice)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="flex-column justify-content-md-center">
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="CreateWork" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Добавить</a>
+        </div>
+        &nbsp;
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="UpdateWork" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Изменить</a>
+        </div>
+        &nbsp;
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="DeleteWork" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Удалить</a>
+        </div>
+        &nbsp;
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="UpdateWorkStatus" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Изменить статус работы</a>
+        </div>
+    </div>
+</section>

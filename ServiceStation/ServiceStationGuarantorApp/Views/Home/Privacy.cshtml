@@ -1,0 +1,39 @@
+﻿@using ServiceStationContracts.ViewModels
+
+@model GuarantorViewModel
+
+@{
+    ViewData["Title"] = "Privacy";
+}
+<div class="text-center">
+    <h2 class="display-4">Ваши данные</h2>
+</div>
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card-body">
+            <div class="form-group pb-3">
+                <label>Номер телефона</label>
+                <input type="text" name="number" value="@Model.GuarantorNumber" class="form-control" placeholder="Введите номер телефона" />
+            </div>
+
+            <div class="form-group pb-3">
+                <label>Электронная почта</label>
+                <input type="text" name="email" value="@Model.GuarantorEmail" class="form-control" placeholder="Введите электронную почту" />
+            </div>
+
+            <div class="form-group pb-3">
+                <label>ФИО</label>
+                <input type="text" name="FIO" value="@Model.GuarantorFIO" class="form-control" placeholder="Введите ФИО" />
+            </div>
+
+            <div class="form-group pb-3">
+                <label>Пароль</label>
+                <input type="text" name="password" value="@Model.GuarantorPassword" class="form-control" placeholder="Введите пароль" />
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Сохранить" class="btn btn-outline-dark" />
+            </div>
+        </div>              
+    </div>
+</form>

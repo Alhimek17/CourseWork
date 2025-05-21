@@ -1,0 +1,36 @@
+﻿    @using ServiceStationContracts.ViewModels;
+@using ServiceStationDataModels.Models;
+
+@{
+    ViewData["Title"] = "BindingTechnicalWorkToWork";
+}
+
+@model Tuple<List<TechnicalWorkViewModel>, List<WorkViewModel>>
+
+<div class="container w-50">
+    <h2>Привязка ТО к работе:</h2>
+    <form method="post">
+        <div class="form-group">
+            <label for="technicalWork">Выберите ТО</label>
+            <select id="technicalWork" name="technicalWork" class="form-control">
+                @foreach (var technicalWork in Model.Item1)
+                {
+                    <option value="@technicalWork.Id">@Html.DisplayFor(modelItem => technicalWork.WorkType)</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="work">Выберите Работу</label>
+            <select id="work" name="work" class="form-control">
+                @foreach (var work in Model.Item2)
+                {
+                    <option value="@work.Id">@Html.DisplayFor(modelItem => work.WorkName)</option>
+                }
+            </select>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Добавить" class="btn btn-secondary" />
+        </div>
+    </form>
+</div>

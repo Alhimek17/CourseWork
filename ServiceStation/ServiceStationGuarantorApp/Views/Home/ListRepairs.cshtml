@@ -1,0 +1,61 @@
+﻿﻿@using ServiceStationContracts.ViewModels
+
+@model List<RepairViewModel>
+
+@{
+	ViewData["Title"] = "ListRepairs";
+}
+
+<section>
+    <h2>Список ремонтов:</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr style="height: 31px">
+                <th>
+                    Номер
+                </th>
+                <th>
+                    Название ремонта
+                </th>
+                <th>
+                    Дата начала ремонта
+                </th>
+                <th>
+                    Стоимость ремонта
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RepairName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RepairStartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RepairPrice)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="flex-column justify-content-md-center">
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="CreateRepair" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Добавить</a>
+        </div>
+        &nbsp;
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="UpdateRepair" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Изменить</a>
+        </div>
+        &nbsp;
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="DeleteRepair" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Удалить</a>
+        </div>  
+    </div>
+</section>

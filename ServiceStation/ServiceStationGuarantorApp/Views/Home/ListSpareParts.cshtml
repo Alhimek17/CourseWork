@@ -1,0 +1,54 @@
+﻿﻿@using ServiceStationContracts.ViewModels
+
+@model List<SparePartViewModel>
+@{
+    ViewData["Title"] = "ListSpareParts";
+}
+
+<section>
+    <h2>Список запчастей:</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr style="height: 31px">
+                <th>
+                    Номер
+                </th>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Стоимость
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SparePartName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SparePartPrice)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="flex-column justify-content-md-center">
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="CreateSparePart" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Добавить</a>
+        </div>
+        &nbsp;
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="UpdateSparePart" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Изменить</a>
+        </div>
+        &nbsp;
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="DeleteSparePart" class="btn btn-outline-dark text-center d-flex justify-content-md-center">Удалить</a>
+        </div>
+    </div>
+</section>

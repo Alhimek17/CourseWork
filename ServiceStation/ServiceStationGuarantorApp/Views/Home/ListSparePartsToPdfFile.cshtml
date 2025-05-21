@@ -1,0 +1,70 @@
+﻿@using ServiceStationContracts.ViewModels
+
+@{
+	ViewData["Title"] = "ListSparePartsToPdfFile";
+}
+
+<div class="text-center">
+	<h2 class="display-4">Отчёт по запчастям за период</h2>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="dateFrom" class="form-label text-custom-color-1">Начало периода:</label>
+                <input type="datetime-local" id="dateFrom" name="dateFrom" class="form-control" placeholder="Выберите дату начала периода">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="dateTo" class="form-label text-custom-color-1">Окончание периода:</label>
+                <input type="datetime-local" id="dateTo" name="dateTo" class="form-control" placeholder="Выберите дату окончания периода">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="guarantorEmail" class="form-label text-custom-color-1">Введите почту:</label>
+        <input type="email" id="guarantorEmail" name="guarantorEmail" class="form-control" placeholder="Введите вашу почту">
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-outline-dark w-100 text-center d-flex justify-content-md-center">Отправить на почту</button>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <button type="button" id="view" class="btn btn-outline-dark w-100 text-center d-flex justify-content-md-center">Предварительный просмотр</button>
+        </div>
+    </div>
+
+    <div id="report"></div>
+</form>
+
+@section Scripts {
+    <script>
+        function table() {
+            var dateFrom = $('#dateFrom').val();
+            var dateTo = $('#dateTo').val();
+            if (dateFrom && dateTo) {
+                $.ajax({
+                    method: "GET",
+                    url: "/Home/GetSparePartsReport",
+                    data: { dateFrom: dateFrom, dateTo: dateTo },
+                    success: function (result) {
+                        if (result != null) {
+                            $('#report').html(result);
+                        }
+                    }
+                });
+            };
+        }
+        table();
+        $('#view').on('click', (e) => table());
+    </script>
+}

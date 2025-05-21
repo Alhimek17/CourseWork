@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "UpdateCar";
+}
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center w-75">
+        <div class="card-body ">
+            <div class="form-group">
+                <label>Машины: </label>
+                <select id="car" name="car" class="form-control" asp-items="@(new SelectList(@ViewBag.Cars, "Id", "CarNumber", "CarBrand"))"></select>
+            </div>
+            <div class="form-group">
+                <label>Номер машины</label>
+                <input type="text" id="carNumber" placeholder="Введите номер машины" name="carNumber" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Марка машины</label>
+                <input type="text" id="carBrand" placeholder="Введите марку машины" name="carBrand" class="form-control" step="1" />
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Сохранить" class="btn btn-secondary text-center" />
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts
+{
+    <script>
+        function check() {
+            var car = $('#car').val();
+            if (car) {
+                $.ajax({
+                    method: "GET",
+                    url: "/Home/GetCar",
+                    data: { carId: car },
+                    success: function (result) {
+                        $('#carNumber').val(result.carNumber);
+                        $('#carBrand').val(result.carBrand);
+                    }
+                });
+            };
+        }
+        check();
+        $('#car').on('change', function () {
+            check();
+        });
+    </script>
+}

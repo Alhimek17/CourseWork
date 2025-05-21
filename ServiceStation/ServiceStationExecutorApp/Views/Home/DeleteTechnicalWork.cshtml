@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "DeleteTechnicalWork";
+}
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center w-50">
+        <div class="card-body">
+            <div class="form-group">
+                <label> ТО: </label>
+                <select id="technicalWork" name="technicalWork" class="form-control" asp-items="@(new SelectList(@ViewBag.TechnicalWorks, "Id", "WorkType", "WorkPrice", "DateStartWork"))"></select>
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Сохранить" class="btn btn-secondary text-center" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,52 @@
+﻿﻿@using ServiceStationContracts.ViewModels
+
+@model ExecutorViewModel
+
+@{
+	ViewData["Title"] = "Privacy";
+}
+<head>
+    <link rel="stylesheet" asp-append-version="true" />
+</head>
+<div class="text-center">
+    <h2 > Мои данные </h2>
+</div>
+<form method="post" class="justify-content-center align-items-center container text-center">
+    <div>
+    <label>Электронная почта</label>
+    <input
+        type="email"
+        placeholder="Введите электронную почту"
+        name="email"
+        class="form-control w-50 mx-auto mx-aut"
+        value="@Model.ExecutorEmail" />
+    </div>
+    <div>
+        <label>ФИО</label>
+        <input
+            type="text"
+            placeholder="Введите ФИО"
+            name="fio"
+            class="form-control w-50 mx-auto"
+            value="@Model.ExecutorFIO" />
+        </div>
+    <div>
+        <label>Номер телефона</label>
+        <input
+            type="text"
+            name="number"
+            value="@Model.ExecutorNumber"
+            class="form-control w-50 mx-auto"
+            placeholder="Введите номер телефона"/>
+    </div>
+    <div>
+        <label>Пароль</label>
+        <input
+            type="text"
+            placeholder="Введите пароль"
+            name="password"
+            class="form-control w-50 mx-auto"
+            value="@Model.ExecutorPassword" />
+    </div>
+    <div class="py-3"><input type="submit" class="btn btn-secondary text-center" value="Изменить" /></div>
+</form>

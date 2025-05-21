@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStationBusinessLogic\ServiceStationBusinessLogic.csproj" />
+    <ProjectReference Include="..\ServiceStationContracts\ServiceStationContracts.csproj" />
+    <ProjectReference Include="..\ServiceStationDatabaseImplement\ServiceStationDatabaseImplement.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+    <Folder Include="Reports\" />
+  </ItemGroup>
+
+</Project>

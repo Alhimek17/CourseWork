@@ -1,0 +1,19 @@
+﻿
+@{
+	ViewData["Title"] = "DeleteSparePart";
+}
+
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center0 w-25">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Запчасти: </label>
+                <select id="sparepart" name="sparepart" class="form-control" asp-items="@(new SelectList(@ViewBag.SpareParts, "Id", "SparePartName", "SparePartPrice"))"></select>
+            </div>
+            <br>
+            <div class="text-center pb-3">
+                <input type="submit" value="Удалить" class="btn btn-outline-dark text-center w-100" />
+            </div>
+        </div>
+    </div>
+</form>

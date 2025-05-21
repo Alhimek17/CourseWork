@@ -1,0 +1,56 @@
+﻿@using ServiceStationContracts.ViewModels
+
+@model List<SparePartViewModel>
+
+@{
+	ViewData["Title"] = "ListDefectSparePartToFile";
+}
+
+<div class="text-center">
+	<h2 class="display-4">Создание отчёта по запчастям</h2>
+</div>
+
+<div class="text-start">
+    <form method="post">
+        <label class="form-label fs-4">Выберите формат файла:</label>
+        <div class="form-check d-flex">
+            <input class="form-check-input my-auto" type="radio" name="type" value="docx" id="docx">
+            <label class="form-check-label fs-5 ps-2" for="docx">Word-файл</label>
+        </div>
+
+        <div class="form-check d-flex">
+            <input class="form-check-input my-auto" type="radio" name="type" value="xlsx" id="xlsx" checked>
+            <label class="form-check-label fs-5 ps-2" for="xlsx">Excel-файл</label>
+        </div>
+
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col" class="fs-5">Название запчасти</th>
+                    <th scope="col" class="fs-5">Цена</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="height: 75px">
+                        <td>
+                            <input type="checkbox" class="form-check-input" name="Ids[]" value="@item.Id" id="@item.Id">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SparePartName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SparePartPrice)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-block btn-outline-dark w-100">Создать</button>
+        </div>
+    </form>
+</div>

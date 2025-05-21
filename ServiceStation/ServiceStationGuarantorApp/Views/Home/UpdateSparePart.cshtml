@@ -1,0 +1,51 @@
+﻿
+@{
+	ViewData["Title"] = "UpdateSparePart";
+}
+
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center w-25">
+        <div class="card-body ">
+            <div class="form-group">
+                <label>Запчасти: </label>
+                <select id="sparepart" name="sparepart" class="form-control" asp-items="@(new SelectList(@ViewBag.SpareParts, "Id", "SparePartName", "SparePartPrice"))"></select>
+            </div>
+            <div class="form-group">
+                <label>Название запчасти</label>
+                <input type="text" id="sparepartName" placeholder="Введите название запчасти" name="sparepartName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Стоимость запчасти</label>
+                <input type="text" id="sparepartPrice" placeholder="Введите стоимость запчасти" name="sparepartPrice" class="form-control" step="1" />
+            </div>
+            <br>
+            <div class="text-center pb-3">
+                <input type="submit" value="Сохранить" class="btn btn-outline-dark text-center w-100" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+                {
+    <script>
+        function check() {
+            var sparepart = $('#sparepart').val();
+            if (sparepart) {
+                $.ajax({
+                    method: "GET",
+                    url: "/Home/GetSparePart",
+                    data: { sparepartId: sparepart },
+                    success: function (result) {
+                        $('#sparepartName').val(result.sparePartName);
+                        $('#sparepartPrice').val(result.sparePartPrice);
+                    }
+                });
+            };
+        }
+        check();
+        $('#sparepart').on('change', function () {
+            check();
+        });
+    </script>
+}

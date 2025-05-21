@@ -1,0 +1,35 @@
+﻿@using ServiceStationContracts.ViewModels;
+@using ServiceStationDataModels.Models;
+
+@{
+    ViewData["Title"] = "BindingRepairToDefects";
+}
+
+@model Tuple<List<RepairViewModel>, List<DefectViewModel>>
+
+<div class="container w-50">
+    <form method="post">
+        <div class="form-group">
+            <label for="repair">Выберите ремонт</label>
+            <select id="repair" name="repair" class="form-control">
+                @foreach (var repair in Model.Item1)
+                {
+                    <option value="@repair.Id">@Html.DisplayFor(modelItem => repair.RepairName)</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="defect">Выберите неисправность</label>
+            <select id="defect" name="defect" class="form-control">
+                @foreach (var defect in Model.Item2)
+                {
+                    <option value="@defect.Id">@Html.DisplayFor(modelItem => defect.DefectType)</option>
+                }
+            </select>
+        </div>
+        <br>
+        <div class="text-center pb-3">
+            <input type="submit" value="Добавить" class="btn btn-outline-dark text-center w-100" />
+        </div>
+    </form>
+</div>

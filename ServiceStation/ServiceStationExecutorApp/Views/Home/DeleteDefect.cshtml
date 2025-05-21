@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "DeleteDefect";
+}
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center w-50">
+        <div class="card-body">
+            <div class="form-group">
+                <label> Неисправности: </label>
+                <select id="defect" name="defect" class="form-control" asp-items="@(new SelectList(@ViewBag.Defects, "Id", "DefectType", "DefectPrice"))"></select>
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Сохранить" class="btn btn-secondary text-center" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Enter";
+}
+
+<div class="text-center">
+    <h2 class="display-4">Вход в приложение</h2>
+</div>
+<form method="post">
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card-body">
+
+            <div class="form-group pb-3">
+                <label>Номер телефона</label>
+                <input type="text" name="number" class="form-control" placeholder="Введите свой номер телефона"/>
+            </div>
+
+            <div class="form-group pb-3">
+                <label>Пароль</label>
+                <input type="password" name="password" class="form-control" placeholder="Введите свой пароль"/>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-dark">Войти</button>
+            </div>
+        </div>
+    </div>
+</form>

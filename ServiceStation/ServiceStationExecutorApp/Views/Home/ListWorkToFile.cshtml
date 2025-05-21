@@ -1,0 +1,82 @@
+﻿@using ServiceStationContracts.ViewModels
+
+@model List<CarViewModel>
+
+@{
+    ViewData["Title"] = "ListWorkToFile";
+}
+
+<div class="text-center">
+    <h2>
+        Создание списка работ
+    </h2>
+</div>
+
+<div class="text-center w-75 mx-auto">
+    <form method="post">
+        <div class="py-3">
+            <label>
+                Выберите формат файла:
+            </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" value="docx" id="docx" checked>
+                <label for="docx">
+                    Word-файл
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" value="xlsx" id="xlsx">
+                <label for="xlsx">
+                    Excel-файл
+                </label>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <table class="table">
+                        <colgroup>
+                            <col width="10%" />
+                            <col width="60%" />
+                            <col width="30%" />
+                        </colgroup>
+                        <thead>
+                            <tr style="height: 31px">
+                                <th>
+
+                                </th>
+                                <th>
+                                    Номер машины
+                                </th>
+                                <th>
+                                    Марка машины
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr style="height: 75px">
+                                    <td>
+                                        <input type="checkbox" class="form-check-input" name="Ids[]" value="@item.Id" id="@item.Id">
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CarNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CarBrand)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div style="padding-bottom: 120px" class="row">
+            <div class="col-4"></div>
+            <div class="col-4"><input type="submit" class="btn btn-secondary w-100" value="Создать файл" /></div>
+            <div class="col-4"></div>
+        </div>
+    </form>
+</div>

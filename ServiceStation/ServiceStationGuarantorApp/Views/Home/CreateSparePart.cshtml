@@ -1,0 +1,21 @@
+﻿
+@{
+	ViewData["Title"] = "CreateSparePart";
+}
+
+<form method="post">
+    <div class="w-25 container justify-content-center align-items-center">
+        <div class="form-group py-2">
+            <label>Название запчасти</label>
+            <input type="text" id="sparepartName" placeholder="Введите название запчасти" name="sparepartName" class="form-control" />
+        </div>
+        <div class="form-group py-2">
+            <label>Стоимость запчасти</label>
+            <input type="text" id="sparepartPrice" placeholder="Введите стоимость запчасти" name="sparepartPrice" class="form-control" step="1" />
+        </div>
+        <br>
+        <div class="text-center pb-3">
+            <input type="submit" value="Сохранить" class="btn btn-outline-dark text-center w-100" />
+        </div>
+    </div>
+</form>

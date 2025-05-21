@@ -1,0 +1,47 @@
+﻿@using ServiceStationContracts.ViewModels
+
+@model List<DefectViewModel>
+@{
+    ViewData["Title"] = "ListDefects";
+}
+<section>
+    <h2>Список неисправностей:</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr style="height: 31px">
+                <th>
+                    Номер
+                </th>
+                <th>
+                    Тип неисправности
+                </th>
+                <th>
+                    Цена
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DefectType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DefectPrice)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row justify-content-md-center">
+        <a asp-controller="Home" asp-action="CreateDefect" class="btn btn-secondary text-center col-2">Добавить</a>
+        &nbsp;
+        <a asp-controller="Home" asp-action="UpdateDefect" class="btn btn-secondary text-center col-2">Изменить</a>
+        &nbsp;
+        <a asp-controller="Home" asp-action="DeleteDefect" class="btn btn-secondary text-center col-2">Удалить</a>
+    </div>
+</section>
